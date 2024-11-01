@@ -4,11 +4,10 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import { Home, Blog, Planeta, MisionVision, Explora } from './Page';
 
-
 const App = () => {
   return (
     <Router>
-      <div style={{ position: 'relative', minHeight: '100vh' }} className="flex">
+      <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: '#add8e6' }} className="flex flex-col"> {/* Color azul claro */}
         <div style={{
           position: 'absolute',
           top: 0,
@@ -22,7 +21,7 @@ const App = () => {
         }} />
 
         <Navbar />
-        <div className="flex-grow container mx-auto p-4">
+        <div className="flex-grow container mx-auto p-4 mt-20"> {/*margen superior*/}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Blog" element={<Blog />} />
@@ -31,10 +30,11 @@ const App = () => {
             <Route path="/Explora" element={<Explora />} />
           </Routes>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </Router>
   );
 };
 
 export default App;
+
