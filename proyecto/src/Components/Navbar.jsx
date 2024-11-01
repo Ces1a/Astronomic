@@ -1,11 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '../assets/img/logo8.png'; // Importa el logo desde assets
 
 const Navbar = () => {
   return (
-    <nav className="bg-gradient-to-r from-[#001f3f] via-[#003b5c] to-[#00aaff] p-6 shadow-lg fixed w-full z-10">
-      <div className="container mx-auto flex justify-between items-center h-full">
-        <h1 className="text-white text-3xl font-extrabold tracking-wide">ASTRONOMY</h1>
+    <nav className="bg-gradient-to-r from-[#001f3f] via-[#003b5c] to-[#00aaff] p-6 shadow-lg w-full z-10 flex items-center" style={{ height: '80px' }}>
+      <div className="container mx-auto flex items-center justify-between h-full">
+        <div className="flex items-center h-full">
+          <img src={logo} alt="Logo" className="h-24 mr-4" /> {/* Ajusta la altura aquí */}
+          <h1 className="text-white text-3xl font-extrabold tracking-wide">ASTRONOMY</h1>
+        </div>
         <div className="flex space-x-8">
           <NavLink
             to="/"
@@ -54,4 +58,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
