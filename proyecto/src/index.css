@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Asegúrate de que el CSS de Tailwind esté incluido aquí */
+
+html, body {
+    height: 100%;
+    overflow-y: auto; /* Asegura que la scrollbar vertical esté siempre activa */
+  }
+  
+  /* Scrollbar personalizada para navegadores WebKit (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    width: 12px; /* Ancho de la scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #003b5c; /* Color del fondo de la scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #0704b1; /* Color de la parte desplazable de la scrollbar */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  /* Estilos para Firefox */
+  * {
+    scrollbar-width: thin; /* Hacer la scrollbar delgada */
+    scrollbar-color: hwb(226 31% 8%) #003b5c; /* Color de la parte desplazable y el fondo */
+  }
+  
