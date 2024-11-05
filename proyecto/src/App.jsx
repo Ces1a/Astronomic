@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-import { Home, Blog, Planeta, MisionVision, Explora } from './Page';
+import { Home, Blog, Planeta, MisionVision, Explora,ImagenesLibrary, } from './Page';
 
 const App = () => {
   return (
@@ -25,6 +25,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Blog" element={<Blog />} />
+            <Route path="/ImagenesLibrary" element={<ImagenesLibrary/>} />
             <Route path="/Planeta" element={<Planeta />} />
             <Route path="/MisionVision" element={<MisionVision />} />
             <Route path="/Explora" element={<Explora />} />
