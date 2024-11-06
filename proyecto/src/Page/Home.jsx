@@ -1,6 +1,4 @@
 import React from 'react';
-
-// Importar el video desde la carpeta 'assets/img'
 import videoSrc from '../assets/img/video.mp4';
 import img1 from '../assets/img/img1.png';  
 import img2 from '../assets/img/img2.png';
@@ -13,14 +11,16 @@ const Home = () => {
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 to-blue-700 mb-6 leading-tight animate-text">
         Bienvenido a Astronomy
       </h1>
-      <p className="mb-6 text-lg text-gray-400">
+
+      {/* Texto destacado para "Explora el universo" */}
+      <p className="mb-6 text-3xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-teal-400 font-semibold">
         Explora el universo y aprende sobre los planetas, estrellas y mucho más.
       </p>
 
       {/* Video centrado y en bucle */}
       <div className="flex justify-center mb-8">
         <video 
-          width="80%"  // Ajusta el tamaño del video a tu preferencia
+          width="80%"  // se ajusto el tamaño del video 
           height="auto" 
           controls
           loop  //  el video se repita indefinidamente
@@ -33,7 +33,11 @@ const Home = () => {
 
       {/* Sección de Artículos */}
       <div className="mt-10">
-        <h3 className="text-3xl font-semibold text-gray-100 mb-6">Últimos Artículos</h3>
+        {/* Título "Últimos Artículos" con estilo azul oscuro */}
+        <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 to-indigo-600 mb-6">
+          Últimos Artículos
+        </h3>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
           {/* Artículo 1 */}
@@ -76,7 +80,7 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Artículo 3 - Link actualizado */}
+          {/* Artículo 3*/}
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
             <div className="mb-4">
               <img src={img3} alt="Artículo 3" className="w-16 h-16 rounded-full mx-auto mb-4"/>
