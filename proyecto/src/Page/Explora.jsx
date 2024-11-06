@@ -20,7 +20,6 @@ const Explora = () => {
                 </div>
             </div>
         </section>
-    
     );
 };
 
