@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImagenesLibrary from './ImagenesLibrary';
-
-// Importamos la imagen directamente
 import fondoImage from '../assets/img/Fondo2.png';
 
 const Blog = () => {
@@ -14,6 +12,11 @@ const Blog = () => {
   const API_KEY = 'cbbmg6jArmH4JHY9gW3O237eIYpHfwLeWjQqMvwd';
 
   useEffect(() => {
+    // Cargar publicaciones guardadas desde localStorage
+    const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+    setPosts(storedPosts);
+
+    // Obtener la imagen del día de la NASA
     const fetchApodData = async () => {
       try {
         const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`);
@@ -26,21 +29,28 @@ const Blog = () => {
     fetchApodData();
   }, []);
 
+  useEffect(() => {
+    // Guardar publicaciones en localStorage cada vez que se actualicen
+    if (posts.length > 0) {
+      localStorage.setItem('posts', JSON.stringify(posts));
+    }
+  }, [posts]);
+
   const handleSubmitPost = (e) => {
     e.preventDefault();
     if (newPost.trim()) {
-      setPosts([{ text: newPost, comments: [] }, ...posts]); // Añadir la nueva publicación al principio
+      const newPostObj = { text: newPost, comments: [] };
+      setPosts([newPostObj, ...posts]); // Añadir la nueva publicación al principio
       setNewPost(''); // Limpiar el campo de entrada
     }
   };
 
   const handlePostDelete = (postIndex) => {
-    // Eliminar la publicación en el índice especificado
-    setPosts((prevPosts) => prevPosts.filter((_, index) => index !== postIndex));
+    const updatedPosts = posts.filter((_, index) => index !== postIndex);
+    setPosts(updatedPosts); // Actualizar publicaciones después de eliminar
   };
 
   const handleCommentChange = (postIndex, value) => {
-    // Cambiar el valor del comentario en el índice de publicación
     setNewComments((prev) => ({
       ...prev,
       [postIndex]: value,
@@ -51,16 +61,16 @@ const Blog = () => {
     if (e.key === 'Enter' && newComments[postIndex]?.trim()) {
       e.preventDefault();
       const updatedPosts = [...posts];
-      updatedPosts[postIndex].comments.push(newComments[postIndex]); // Agregar el comentario
-      setPosts(updatedPosts); // Actualizar las publicaciones
-      handleCommentChange(postIndex, ''); // Limpiar el campo de texto de comentario
+      updatedPosts[postIndex].comments.push(newComments[postIndex]);
+      setPosts(updatedPosts);
+      handleCommentChange(postIndex, ''); // Limpiar el comentario
     }
   };
 
   const handleCommentDelete = (postIndex, commentIndex) => {
     const updatedPosts = [...posts];
-    updatedPosts[postIndex].comments.splice(commentIndex, 1); // Eliminar el comentario en el índice
-    setPosts(updatedPosts); // Actualizar las publicaciones después de eliminar el comentario
+    updatedPosts[postIndex].comments.splice(commentIndex, 1); // Eliminar el comentario
+    setPosts(updatedPosts);
   };
 
   const renderTabContent = () => {
@@ -68,17 +78,19 @@ const Blog = () => {
       case 'foro':
         return (
           <div>
-            <h2 className="text-xl text-white">Foro</h2>
-            {/* Formulario para la pregunta principal */}
+            {/* Título del Foro */}
+            <h2 className="text-3xl font-bold text-yellow-400 mb-4">Foro de dudas e inquietudes</h2>
+
+            {/* Formulario para la nueva publicación */}
             <form onSubmit={handleSubmitPost} className="mt-4">
               <textarea
                 value={newPost}
                 onChange={(e) => setNewPost(e.target.value)}
                 placeholder="Escribe tu mensaje en el foro..."
-                className="w-full p-2 border rounded text-black"
+                className="w-full p-3 border rounded text-black text-lg"
                 rows="4"
               />
-              <button type="submit" className="mt-2 bg-blue-500 text-white p-2 rounded">
+              <button type="submit" className="mt-2 bg-blue-500 text-white p-2 rounded text-lg">
                 Enviar
               </button>
             </form>
@@ -90,8 +102,7 @@ const Blog = () => {
               ) : (
                 posts.map((post, postIndex) => (
                   <div key={postIndex} className="border-b py-2">
-                    {/* Mostrar la publicación */}
-                    <div className="text-white">{post.text}</div>
+                    <div className="text-white text-lg">{post.text}</div>
 
                     {/* Formulario de comentarios */}
                     <form className="mt-2">
@@ -101,11 +112,11 @@ const Blog = () => {
                         onChange={(e) => handleCommentChange(postIndex, e.target.value)}
                         onKeyDown={(e) => handleCommentSubmit(postIndex, e)}
                         placeholder="Escribe un comentario..."
-                        className="w-full p-2 border rounded text-black"
+                        className="w-full p-2 border rounded text-black text-lg"
                       />
                     </form>
 
-                    {/* Mostrar comentarios de la publicación */}
+                    {/* Mostrar comentarios */}
                     <div className="mt-2">
                       {post.comments.length === 0 ? (
                         <p className="text-white">No hay comentarios.</p>
@@ -113,8 +124,8 @@ const Blog = () => {
                         post.comments.map((comment, commentIndex) => (
                           <div key={commentIndex} className="flex justify-between mt-1">
                             <span className="text-white">{comment}</span>
-                            <button 
-                              onClick={() => handleCommentDelete(postIndex, commentIndex)} 
+                            <button
+                              onClick={() => handleCommentDelete(postIndex, commentIndex)}
                               className="text-red-500 hover:underline"
                             >
                               Eliminar
@@ -126,8 +137,8 @@ const Blog = () => {
 
                     {/* Botón para eliminar la publicación */}
                     <div className="flex justify-between mt-2">
-                      <button 
-                        onClick={() => handlePostDelete(postIndex)} 
+                      <button
+                        onClick={() => handlePostDelete(postIndex)}
                         className="text-red-500 hover:underline"
                       >
                         Eliminar Publicación
@@ -148,10 +159,10 @@ const Blog = () => {
                 <h3 className="text-2xl font-bold text-blue-600 text-center">
                   Hoy en el Universo: La Imagen del Día
                 </h3>
-                <img 
-                  src={apodData.url} 
-                  alt={apodData.title} 
-                  className="mt-4 w-3/4 rounded mx-auto shadow-lg" 
+                <img
+                  src={apodData.url}
+                  alt={apodData.title}
+                  className="mt-4 w-3/4 rounded mx-auto shadow-lg"
                 />
                 <p className="mt-4 text-center text-white">{apodData.explanation}</p>
               </div>
@@ -172,43 +183,39 @@ const Blog = () => {
   };
 
   return (
-    <div 
-      className="w-full h-full p-4" 
-      style={{ 
-        backgroundImage: `url(${fondoImage})`,  // Usamos la variable que contiene la imagen
-        backgroundSize: 'cover', 
-        backgroundPosition: 'center', 
+    <div
+      className="w-full h-full p-4"
+      style={{
+        backgroundImage: `url(${fondoImage})`, // Imagen de fondo
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        position: 'relative'
+        position: 'relative',
       }}
     >
       {/* Capa opaca sobre la imagen de fondo */}
-      <div 
-        className="absolute inset-0 bg-black opacity-50" // capa negra semi-transparente
-      ></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="relative z-10">
-        {/* Navbar con colores y centrado */}
+        {/* Navbar */}
         <div className="flex justify-between items-center bg-[#003b5c] text-white p-4 w-full">
-          <div className="text-2xl font-bold text-white">
-            El Observatorio Digital
-          </div>
+          <div className="text-2xl font-bold text-white">El Observatorio Digital</div>
 
           <div className="flex space-x-8">
-            <button 
-              onClick={() => setActiveTab('foro')} 
+            <button
+              onClick={() => setActiveTab('foro')}
               className={`p-2 text-white font-bold ${activeTab === 'foro' ? 'text-yellow-500' : 'hover:text-yellow-500'} transition-colors duration-300`}
             >
-              Foro 
+              Foro
             </button>
-            <button 
-              onClick={() => setActiveTab('imagenDelDia')} 
+            <button
+              onClick={() => setActiveTab('imagenDelDia')}
               className={`p-2 text-white font-bold ${activeTab === 'imagenDelDia' ? 'text-yellow-500' : 'hover:text-yellow-500'} transition-colors duration-300`}
             >
               Imagen del Día
             </button>
-            <button 
-              onClick={() => setActiveTab('galeria')} 
+            <button
+              onClick={() => setActiveTab('galeria')}
               className={`p-2 text-white font-bold ${activeTab === 'galeria' ? 'text-yellow-500' : 'hover:text-yellow-500'} transition-colors duration-300`}
             >
               Galería de Imágenes
