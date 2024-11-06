@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../../src/App.css";  // Tu archivo de estilos, si lo tienes
 
 const Explora = () => {
-    const [marsImages, setMarsImages] = useState([]);  // Imágenes de Marte
-    const [fireballData, setFireballData] = useState([]); // Datos de fireball
-    const apiKey = "V1SUZ9nW8DllDfQrtADt7ugTtqucmDhqBjdlWt98";
+    const [imageOfTheDay, setImageOfTheDay] = useState(null);  // Estado para la imagen del día
+    const [loading, setLoading] = useState(true);  // Estado para saber si estamos cargando
+
+    const apiKey = "V1SUZ9nW8DllDfQrtADt7ugTtqucmDhqBjdlWt98";  // Tu clave API de la NASA
 
     useEffect(() => {
-        // Llamada para obtener imágenes del rover en Marte (cámara fhaz)
-        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=${apiKey}`)
+        // Llamada a la API de la Imagen del Día
+        axios.get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
             .then(response => {
-                setMarsImages(response.data.photos.slice(0, 1));  // Limitar a 1 imagen
+                setImageOfTheDay(response.data);  // Guardar los datos de la API
+                setLoading(false);  // Cambiar el estado de carga a false
             })
-            .catch(error => console.error("Error al cargar imágenes de Marte:", error));
+            .catch(error => {
+                console.error("Error al cargar la imagen del día:", error);
+                setLoading(false);  // Asegurarse de que no se quede en estado de carga
+            });
+    }, []);
 
     return (
         <section className="explora-section">
-            {/* Sección de imágenes de Marte */}
-            <div className="mars-gallery">
-                <h1>Curiosidades de Marte</h1>
-                {marsImages.length > 0 ? (
-                    <div className="mars-images">
-                        {marsImages.map((image, index) => (
-                            <img key={index} src={image.img_src} alt={`Mars Rover ${index}`} className="mars-image" />
-                        ))}
-                    </div>
-                ) : (
-                    <p>Cargando imágenes de Marte...</p>
-                )}
-            </div>
+            <h1>Imagen del Día de la NASA</h1>
+            {loading ? (
+                <p>Cargando imagen...</p>  // Mensaje mientras se carga la imagen
+            ) : (
+                <div className="image-container">
+                    <h2>{imageOfTheDay?.title}</h2>
+                    <p>{imageOfTheDay?.explanation}</p>
+                    <img
+                        src={imageOfTheDay?.url}
+                        alt={imageOfTheDay?.title}
+                        className="image-of-the-day"
+                    />
+                </div>
+            )}
         </section>
     );
 };
