@@ -11,10 +11,10 @@ const ImagenesLibrary = () => {
       try {
         const response = await axios.get(API_URL, {
           params: {
-            q: 'space', // Puedes personalizar esta consulta de búsqueda, por ejemplo 'space', 'mars', etc.
+            q: 'space', //personalizar consulta de búsqueda, por ejemplo 'space', 'mars', etc.
             media_type: 'image', // Filtrar solo imágenes
-            year_start: '2020', // Limitar el rango de año si lo deseas
-            year_end: '2024', // Limitar el rango de año si lo deseas
+            year_start: '2020', // Limitar el rango de año 
+            year_end: '2024', // Limitar el rango de año
           },
         });
 

@@ -55,3 +55,87 @@ html, body {
     }
   }
   
+
+  /* Estilo para la transición de imágenes dentro del modal */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.modal-image {
+  width: 100%;
+  height: 64vh; /* Ajuste para que la imagen sea más alta en el modal */
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.modal-image-enter {
+  animation: slideInLeft 0.5s forwards;
+}
+
+.modal-image-exit {
+  animation: slideInRight 0.5s forwards;
+}
+
+.modal-navigation {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.modal-navigation button {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-navigation button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+
+/* Efecto de movimiento deslizante (de izquierda a derecha) */
+.mosaic-image {
+  position: relative;
+  animation: slide 5s linear infinite; /* 5 segundos de duración, se repite infinitamente */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%); /* Inicia fuera del contenedor por la izquierda */
+  }
+  100% {
+    transform: translateX(100%); /* Termina fuera del contenedor por la derecha */
+  }
+}
+
+.mosaic-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 bg-gradient-to-r from-[#001f3f] via-[#003b5c] to-[#00aaff] p-6 shadow-lg w-full z-10 flex items-center">
+    <nav className="fixed top-0 left-0 bg-gradient-to-r from-[#001f3f] via-[#003b5c] to-[#00aaff] p-6 shadow-lg w-full z-20 flex items-center">
       <div className="container mx-auto flex items-center justify-between">
         <h1 className="text-white text-3xl font-extrabold tracking-wide">ASTRONOMY</h1>
         

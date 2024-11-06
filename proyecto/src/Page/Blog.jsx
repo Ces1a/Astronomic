@@ -11,7 +11,7 @@ const Blog = () => {
   const API_KEY = 'cbbmg6jArmH4JHY9gW3O237eIYpHfwLeWjQqMvwd';
 
   useEffect(() => {
-    // Cargar publicaciones guardadas desde localStorage
+    // Cargar publicaciones y comentarios desde localStorage
     const storedPosts = JSON.parse(localStorage.getItem('posts')) || [];
     setPosts(storedPosts);
 
@@ -29,7 +29,7 @@ const Blog = () => {
   }, []);
 
   useEffect(() => {
-    // Guardar publicaciones en localStorage cada vez que se actualicen
+    // Guardar publicaciones y comentarios en localStorage cada vez que se actualicen
     if (posts.length > 0) {
       localStorage.setItem('posts', JSON.stringify(posts));
     }
@@ -79,8 +79,8 @@ const Blog = () => {
           <div>
             <h1 className="text-3xl font-bold text-yellow-400 mb-4 text-center">Foro de dudas e Inquietudes</h1>
             <h2 className="text-xl font-semibold text-white text-center mt-4">
-            ¿Hay algo que no entiendes del espacio o la ciencia? ¡Déjanos ayudarte a descubrirlo y aprender juntos en este foro!
-          </h2>
+              ¿Hay algo que no entiendes del espacio o la ciencia? ¡Déjanos ayudarte a descubrirlo y aprender juntos en este foro!
+            </h2>
             <form onSubmit={handleSubmitPost} className="mt-4">
               <textarea
                 value={newPost}
@@ -101,7 +101,9 @@ const Blog = () => {
               ) : (
                 posts.map((post, postIndex) => (
                   <div key={postIndex} className="border-b py-2">
-                    <div className="text-white text-lg">{post.text}</div>
+                    {/* Publicación en negrita */}
+                    <div className="text-white text-lg font-bold">{post.text}</div>
+                    
                     <form className="mt-2">
                       <input
                         type="text"
@@ -113,12 +115,13 @@ const Blog = () => {
                       />
                     </form>
 
-                    <div className="mt-2">
+                    <div className="mt-4"> {/* Espaciado entre comentarios */}
                       {post.comments.length === 0 ? (
                         <p className="text-white">No hay comentarios.</p>
                       ) : (
                         post.comments.map((comment, commentIndex) => (
-                          <div key={commentIndex} className="flex justify-between mt-1">
+                          <div key={commentIndex} className="flex justify-between mt-3">
+                            {/* Comentarios con texto normal y espaciado */}
                             <span className="text-white">{comment}</span>
                             <button
                               onClick={() => handleCommentDelete(postIndex, commentIndex)}
@@ -151,18 +154,12 @@ const Blog = () => {
           <div className="text-white">
             {apodData && (
               <div className="mt-6">
-                {/* Título con estilo sobresaliente */}
-                <h3 className="text-4xl font-extrabold text-yellow-400 text-center">
-                  {apodData.title}
-                </h3>
-
+                <h3 className="text-4xl font-extrabold text-yellow-400 text-center">{apodData.title}</h3>
                 <img
                   src={apodData.url}
                   alt={apodData.title}
                   className="mt-4 w-11/12 mx-auto rounded-lg shadow-lg"
                 />
-
-                {/* Descripción  */}
                 <p className="mt-4 text-xl text-center">{apodData.explanation}</p>
               </div>
             )}
@@ -227,4 +224,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
