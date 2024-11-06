@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImagenesLibrary from './ImagenesLibrary';
-import fondoImage from '../assets/img/Fondo2.png';
 
 const Blog = () => {
   const [activeTab, setActiveTab] = useState('foro');
@@ -78,10 +77,10 @@ const Blog = () => {
       case 'foro':
         return (
           <div>
-            {/* Título del Foro */}
-            <h2 className="text-3xl font-bold text-yellow-400 mb-4">Foro de dudas e inquietudes</h2>
-
-            {/* Formulario para la nueva publicación */}
+            <h1 className="text-3xl font-bold text-yellow-400 mb-4 text-center">Foro de dudas e Inquietudes</h1>
+            <h2 className="text-xl font-semibold text-white text-center mt-4">
+            ¿Hay algo que no entiendes del espacio o la ciencia? ¡Déjanos ayudarte a descubrirlo y aprender juntos en este foro!
+          </h2>
             <form onSubmit={handleSubmitPost} className="mt-4">
               <textarea
                 value={newPost}
@@ -103,8 +102,6 @@ const Blog = () => {
                 posts.map((post, postIndex) => (
                   <div key={postIndex} className="border-b py-2">
                     <div className="text-white text-lg">{post.text}</div>
-
-                    {/* Formulario de comentarios */}
                     <form className="mt-2">
                       <input
                         type="text"
@@ -116,7 +113,6 @@ const Blog = () => {
                       />
                     </form>
 
-                    {/* Mostrar comentarios */}
                     <div className="mt-2">
                       {post.comments.length === 0 ? (
                         <p className="text-white">No hay comentarios.</p>
@@ -135,7 +131,6 @@ const Blog = () => {
                       )}
                     </div>
 
-                    {/* Botón para eliminar la publicación */}
                     <div className="flex justify-between mt-2">
                       <button
                         onClick={() => handlePostDelete(postIndex)}
@@ -153,18 +148,22 @@ const Blog = () => {
 
       case 'imagenDelDia':
         return (
-          <div>
+          <div className="text-white">
             {apodData && (
               <div className="mt-6">
-                <h3 className="text-2xl font-bold text-blue-600 text-center">
-                  Hoy en el Universo: La Imagen del Día
+                {/* Título con estilo sobresaliente */}
+                <h3 className="text-4xl font-extrabold text-yellow-400 text-center">
+                  {apodData.title}
                 </h3>
+
                 <img
                   src={apodData.url}
                   alt={apodData.title}
-                  className="mt-4 w-3/4 rounded mx-auto shadow-lg"
+                  className="mt-4 w-11/12 mx-auto rounded-lg shadow-lg"
                 />
-                <p className="mt-4 text-center text-white">{apodData.explanation}</p>
+
+                {/* Descripción  */}
+                <p className="mt-4 text-xl text-center">{apodData.explanation}</p>
               </div>
             )}
           </div>
@@ -186,18 +185,16 @@ const Blog = () => {
     <div
       className="w-full h-full p-4"
       style={{
-        backgroundImage: `url(${fondoImage})`, // Imagen de fondo
+        backgroundImage: 'linear-gradient(to bottom, #003b5c, #001f2d)', // Degradado de azules oscuros
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         position: 'relative',
       }}
     >
-      {/* Capa opaca sobre la imagen de fondo */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="relative z-10">
-        {/* Navbar */}
         <div className="flex justify-between items-center bg-[#003b5c] text-white p-4 w-full">
           <div className="text-2xl font-bold text-white">El Observatorio Digital</div>
 
@@ -223,7 +220,6 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Renderizo contenido según la pestaña activa */}
         {renderTabContent()}
       </div>
     </div>
@@ -231,3 +227,4 @@ const Blog = () => {
 };
 
 export default Blog;
+
