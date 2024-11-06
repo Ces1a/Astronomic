@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="bg-[#003b5c] text-white py-8 mt-10 relative">
       {/* SVG con ondas más pronunciadas */}
       <svg
-        className="absolute top-[-12rem] left-0 w-full" // Mantér el ancho al 100% y la altura automática
+        className="absolute bottom-0 left-0 w-full" // Posiciona el SVG en la parte inferior
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320" // Esto asegura que las proporciones del SVG no cambien
       >
@@ -18,6 +18,7 @@ const Footer = () => {
         />
       </svg>
 
+      {/* Contenedor del contenido del pie de página */}
       <div className="container mx-auto text-center relative z-10">
         <div className="flex justify-between items-center mb-4">
           {/* Redes sociales alineadas a la izquierda */}

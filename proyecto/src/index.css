@@ -28,3 +28,30 @@ html, body {
     scrollbar-color: hwb(226 31% 8%) #003b5c; /* Color de la parte desplazable y el fondo */
   }
   
+  /* Definir la animación para el efecto de "escritura" */
+@keyframes typing {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  .animate-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    /* Hacer el cursor invisible usando borde transparente */
+    border-right: 3px solid transparent; /* Cursor invisible */
+    width: 0;
+    animation: typing 4s steps(40) 1s forwards, blink 0.75s step-end infinite;
+  }
+  
+  /* Hacer que el cursor "parpadee" si lo necesitas */
+  @keyframes blink {
+    50% {
+      border-color: transparent; /* Mantener invisible el cursor */
+    }
+  }
+  
