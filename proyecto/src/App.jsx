@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-import { Home, Blog, Planeta, MisionVision, Explora,ImagenesLibrary, } from './Page';
+import { Home, Blog, Planeta, MisionVision, Explora,ImagenesLibrary, Expomisiones, Expoplanet } from './Page';
 
 const App = () => {
   return (
@@ -32,6 +32,12 @@ const App = () => {
           </Routes>
         </div>
         <Footer />
+        <div>
+          <Routes className = "Rutasexternas">
+            <Route path='/Expoplanet' element= {<Expoplanet/>}/>
+            <Route path='/Expomisiones' element= {<Expomisiones/>}/>
+          </Routes>
+        </div>
       </div>
     </Router>
   );

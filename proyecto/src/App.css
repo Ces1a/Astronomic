@@ -143,4 +143,141 @@ p {
     transition: transform 0.3s;
 }
 
+.explora-curiosidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.lista-curiosidades {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Crea 3 columnas */
+    gap: 20px; /* Espacio entre las imágenes */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: 1200px; /* Limita el ancho máximo de las imágenes */
+    margin-top: 20px;
+}
+
+.curiosidad-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.curiosidad-imagen {
+    width: 100%;
+    height: 200px; /* Fija la altura de las imágenes */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Bordes redondeados */
+    transition: transform 0.3s ease-in-out; /* Efecto hover */
+}
+
+.curiosidad-imagen:hover {
+    transform: scale(1.05); /* Efecto al pasar el mouse */
+}
+
+.ver-mas {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.ver-mas a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+}
+
+.ver-mas a:hover {
+    text-decoration: underline;
+}
+
+.hubble-gallery {
+    text-align: center;
+}
+/* Estilo general para la galería */
+.hubble-gallery {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Contenedor de las imágenes en una fila */
+.image-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px; /* Espacio entre las imágenes */
+    margin: 20px 0;
+    width: 100%;
+}
+
+.image-item {
+    position: relative;
+    flex: 1;
+    max-width: 18%; /* Limita el ancho máximo de cada imagen al 18% para 5 en fila */
+}
+
+.hubble-image-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hubble-image-img:hover {
+    transform: scale(1.05);
+}
+
+/* Información de la imagen en hover */
+.image-info {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border-radius: 0 0 8px 8px;
+}
+
+.image-item:hover .image-info {
+    display: block;
+}
+
+/* Estilo para la fila de iconos debajo de las imágenes */
+.curiosidades-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px; /* Espacio entre los iconos */
+    margin-top: 30px;
+    padding: 10px 0;
+}
+
+.curiosidades-row ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 40px; /* Espacio entre los elementos de la lista */
+}
+
+.curiosidades-row li {
+    text-align: center;
+}
+
+.curiosidades-row li h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.curiosidades-row i {
+    font-size: 3.5em;
+    color: #444;
+    transition: color 0.3s ease-in-out;
+}
+
+.curiosidades-row i:hover {
+    color: #000;
+}
 

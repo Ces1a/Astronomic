@@ -1,43 +1,96 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "../../src/App.css";  // Tu archivo de estilos, si lo tienes
+import { Link } from 'react-router-dom';
 
 const Explora = () => {
-    const [imageOfTheDay, setImageOfTheDay] = useState(null);  // Estado para la imagen del día
-    const [loading, setLoading] = useState(true);  // Estado para saber si estamos cargando
+    const [imagesData, setImagesData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [date, setDate] = useState("2022-01-01");
 
-    const apiKey = "V1SUZ9nW8DllDfQrtADt7ugTtqucmDhqBjdlWt98";  // Tu clave API de la NASA
+    const apiKey = "V1SUZ9nW8DllDfQrtADt7ugTtqucmDhqBjdlWt98";
+
+    const fetchImages = (selectedDate) => {
+        setLoading(true);
+        axios
+            .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos`, {
+                params: {
+                    earth_date: selectedDate,
+                    camera: "fhaz",
+                    api_key: apiKey
+                }
+            })
+            .then((response) => {
+                setImagesData(response.data.photos);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setLoading(false);
+            });
+    };
 
     useEffect(() => {
-        // Llamada a la API de la Imagen del Día
-        axios.get(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
-            .then(response => {
-                setImageOfTheDay(response.data);  // Guardar los datos de la API
-                setLoading(false);  // Cambiar el estado de carga a false
-            })
-            .catch(error => {
-                console.error("Error al cargar la imagen del día:", error);
-                setLoading(false);  // Asegurarse de que no se quede en estado de carga
-            });
-    }, []);
+        fetchImages(date);
+    }, [date]);
+
+    const handleDateChange = (event) => {
+        setDate(event.target.value);
+    };
+
+    if (loading) return <p>Cargando imágenes...</p>;
+    if (error) return <p>Hubo un error al cargar las imágenes: {error.message}</p>;
 
     return (
-        <section className="explora-section">
-            <h1>Imagen del Día de la NASA</h1>
-            {loading ? (
-                <p>Cargando imagen...</p>  // Mensaje mientras se carga la imagen
-            ) : (
-                <div className="image-container">
-                    <h2>{imageOfTheDay?.title}</h2>
-                    <p>{imageOfTheDay?.explanation}</p>
-                    <img
-                        src={imageOfTheDay?.url}
-                        alt={imageOfTheDay?.title}
-                        className="image-of-the-day"
-                    />
-                </div>
-            )}
-        </section>
+        <div className="hubble-gallery">
+            <h2>Galería de Imágenes de Marte - Rover Curiosity</h2>
+            
+            {/* Campo de entrada de fecha */}
+            <label>
+                Filtrar por fecha:
+                <input type="date" value={date} onChange={handleDateChange} />
+            </label>
+
+            <div className="image-row">
+                {imagesData.slice(0, 5).map((image, index) => (
+                    <div className="image-item" key={index}>
+                        <img
+                            src={image.img_src}
+                            alt={`Foto Marte ${index + 1}`}
+                            className="hubble-image-img"
+                        />
+                        <div className="image-info">
+                            <p><strong>Rover:</strong> {image.rover.name}</p>
+                            <p><strong>Cámara:</strong> {image.camera.full_name}</p>
+                            <p><strong>Fecha:</strong> {image.earth_date}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div className="curiosidades-row">
+                <ul>
+                    <li>
+                        <h3>Planetas</h3>
+                        <Link to="/Expoplanet">
+                            <i className="fa-solid fa-earth-africa"></i>
+                        </Link>         
+                    </li>
+                    <li>
+                        <h3>Misiones</h3>
+                        <Link to="/Expomisiones">
+                            <i className="fa-solid fa-shuttle-space"></i>
+                        </Link>
+                    </li>
+                    <li>
+                        <h3>Diviértete</h3>
+                        <a href="https://www.nasa.gov/learning-resources/for-students-grades-5-8/" target="_blank" rel="noopener noreferrer">
+                            <i className="fa-solid fa-gamepad"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     );
 };
 
