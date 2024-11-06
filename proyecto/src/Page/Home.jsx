@@ -1,8 +1,8 @@
 import React from 'react';
 
-// Importa el video desde la carpeta 'assets/img'
+// Importar el video desde la carpeta 'assets/img'
 import videoSrc from '../assets/img/video.mp4';
-import img1 from '../assets/img/img1.png';  // Asegúrate de tener estas imágenes en tu carpeta
+import img1 from '../assets/img/img1.png';  
 import img2 from '../assets/img/img2.png';
 import img3 from '../assets/img/img3.png';
 
@@ -23,7 +23,7 @@ const Home = () => {
           width="80%"  // Ajusta el tamaño del video a tu preferencia
           height="auto" 
           controls
-          loop  // Esto hace que el video se repita indefinidamente
+          loop  //  el video se repita indefinidamente
           className="rounded-lg shadow-lg"
         >
           <source src={videoSrc} type="video/mp4" />
