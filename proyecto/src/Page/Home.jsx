@@ -6,7 +6,7 @@ import img3 from '../assets/img/img3.png';
 
 const Home = () => {
   return (
-    <div className="text-center py-8 px-4 min-h-screen"> {/* Eliminado bg-gray-900 */}
+    <div className="text-center py-8 px-4 min-h-screen">
       {/* Título con gradiente y efecto de animación "escribiendo" */}
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-800 to-blue-700 mb-6 leading-tight animate-text">
         Bienvenido a Astronomy
@@ -17,13 +17,13 @@ const Home = () => {
         Explora el universo y aprende sobre los planetas, estrellas y mucho más.
       </p>
 
-      {/* Video centrado y en bucle */}
+      {/* Video centrado y con todo el ancho de la pantalla */}
       <div className="flex justify-center mb-8">
         <video 
-          width="80%"  // se ajusto el tamaño del video 
+          width="100%"  // Se ajustó el tamaño del video al 100% del ancho de la pantalla
           height="auto" 
           controls
-          loop  //  el video se repita indefinidamente
+          loop  // El video se repite indefinidamente
           className="rounded-lg shadow-lg"
         >
           <source src={videoSrc} type="video/mp4" />
@@ -80,7 +80,7 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Artículo 3*/}
+          {/* Artículo 3 */}
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
             <div className="mb-4">
               <img src={img3} alt="Artículo 3" className="w-16 h-16 rounded-full mx-auto mb-4"/>
@@ -107,3 +107,4 @@ const Home = () => {
 };
 
 export default Home;
+
