@@ -9,13 +9,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 bg-gradient-to-r from-[#001f3f] via-[#003b5c] to-[#00aaff] p-6 shadow-lg w-full z-20">
-      <div className="container mx-auto flex flex-col items-center lg:flex-row lg:justify-between">
-        {/* Título */}
+    <nav className="fixed top-0 left-0 bg-gradient-to-r from-[#001f3f] via-[#003b5c] to-[#00aaff] p-6 shadow-lg w-full z-20 flex items-center">
+      <div className="container mx-auto flex items-center justify-between">
         <h1 className="text-white text-3xl font-extrabold tracking-wide">ASTRONOMY</h1>
-
-        {/* Botón de menú hamburguesa para pantallas pequeñas */}
-        <div className="block lg:hidden mt-2">
+        
+        {/* Botón de menú hamburguesa */}
+        <div className="block lg:hidden">
           <button onClick={toggleMenu} className="text-white focus:outline-none">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               {isOpen ? (
@@ -28,34 +27,34 @@ const Navbar = () => {
         </div>
 
         {/* Enlaces de navegación */}
-        <div className={`w-full mt-4 lg:mt-0 lg:flex lg:items-center ${isOpen ? 'flex flex-col items-center' : 'hidden'} lg:flex lg:flex-row`}>
+        <div className={`flex-col lg:flex lg:flex-row lg:items-center ${isOpen ? 'flex' : 'hidden'} lg:flex`}>
           <NavLink
             to="/"
-            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} my-2 lg:my-0 mx-4`}
+            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} mx-4`}
           >
             Home
           </NavLink>
           <NavLink
             to="/MisionVision"
-            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} my-2 lg:my-0 mx-4`}
+            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} mx-4`}
           >
             Acerca de Nosotros
           </NavLink>
           <NavLink
             to="/planeta"
-            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} my-2 lg:my-0 mx-4`}
+            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} mx-4`}
           >
             Conoce tu Planeta
           </NavLink>
           <NavLink
             to="/explora"
-            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} my-2 lg:my-0 mx-4`}
+            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} mx-4`}
           >
             Explora el Espacio
           </NavLink>
           <NavLink
             to="/blog"
-            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} my-2 lg:my-0 mx-4`}
+            className={({ isActive }) => `text-lg font-semibold transition-colors duration-300 ${isActive ? 'text-yellow-300' : 'text-white hover:text-yellow-300'} mx-4`}
           >
             Blog
           </NavLink>
