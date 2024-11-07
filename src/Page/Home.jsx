@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import videoSrc from '../assets/img/video.mp4'; 
+import videoSrc from '../assets/img/Video.mp4'; 
 import carrusel from '../assets/img/carrusel1.png';
 import carrusel2 from '../assets/img/carrusel2.png';
 import carrusel3 from '../assets/img/carrusel3.png';
