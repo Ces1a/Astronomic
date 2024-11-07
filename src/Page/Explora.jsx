@@ -38,18 +38,18 @@ const Explora = () => {
         setDate(event.target.value);
     };
 
-    if (loading) return <p>Cargando imágenes...</p>;
+    if (loading) return <p class="justify-center items-center text-black">Cargando imágenes...</p>;
     if (error) return <p>Hubo un error al cargar las imágenes: {error.message}</p>;
 
     return (
-        <div className="hubble-gallery">
-            <h2>Galería de Imágenes de Marte - Rover Curiosity</h2>
+        <div class="bg-gray-900 min-h-screen flex flex-col items-center text-white p-8">
+            <h2 class="text-4xl font-extrabold text-blue-100 mb-2" >Galería de Imágenes de Marte</h2>
             
             {/* Campo de entrada de fecha */}
-            <label>
+            <label class="mb-4 text-center">
                 Filtrar por fecha:
-                <input type="date" value={date} onChange={handleDateChange} />
             </label>
+            <input type="date" value={date} onChange={handleDateChange} />
 
             <div className="image-row">
                 {imagesData.slice(0, 5).map((image, index) => (

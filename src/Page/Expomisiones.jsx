@@ -94,7 +94,7 @@ const Expomisiones = () => {
                         />
                         {selectedIndex === index && (
                             <div>
-                                <p>{item.descripcion}</p>
+                                <p >{item.descripcion}</p>
                                 <a
                                     href={item.Link}
                                     target="_blank"
