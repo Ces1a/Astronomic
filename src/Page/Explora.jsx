@@ -45,11 +45,10 @@ const Explora = () => {
         <div class="bg-gray-900 min-h-screen flex flex-col items-center text-white p-8">
             <h2 class="text-4xl font-extrabold text-blue-100 mb-2" >Galería de Imágenes de Marte</h2>
             
-            {/* Campo de entrada de fecha */}
             <label class="mb-4 text-center">
                 Filtrar por fecha:
             </label>
-            <input type="date" value={date} onChange={handleDateChange} />
+            <input class="mb-6 p-2 rounded bg-gray-800 hover:bg-gray-700 transition text-center" type="date" value={date} onChange={handleDateChange} />
 
             <div className="image-row">
                 {imagesData.slice(0, 5).map((image, index) => (

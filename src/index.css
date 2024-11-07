@@ -1,34 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Asegúrate de que el CSS de Tailwind esté incluido aquí */
+
 
 html, body {
     height: 100%;
-    overflow-y: auto; /* Asegura que la scrollbar vertical esté siempre activa */
+    overflow-y: auto; 
   }
   
-  /* Scrollbar personalizada para navegadores WebKit (Chrome, Safari) */
+  
   ::-webkit-scrollbar {
-    width: 12px; /* Ancho de la scrollbar */
+    width: 12px; 
   }
   
   ::-webkit-scrollbar-track {
-    background: #003b5c; /* Color del fondo de la scrollbar */
+    background: #003b5c; 
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: #0704b1; /* Color de la parte desplazable de la scrollbar */
-    border-radius: 10px; /* Bordes redondeados */
-  }
+    background-color: #0704b1; 
+    border-radius: 10px; }
   
-  /* Estilos para Firefox */
+  
   * {
-    scrollbar-width: thin; /* Hacer la scrollbar delgada */
-    scrollbar-color: hwb(226 31% 8%) #003b5c; /* Color de la parte desplazable y el fondo */
+    scrollbar-width: thin; 
+    scrollbar-color: hwb(226 31% 8%) #003b5c; 
   }
   
-  /* Definir la animación para el efecto de "escritura" */
+  
 @keyframes typing {
     0% {
       width: 0;
@@ -42,21 +41,18 @@ html, body {
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    /* Hacer el cursor invisible usando borde transparente */
-    border-right: 3px solid transparent; /* Cursor invisible */
+    border-right: 3px solid transparent;
     width: 0;
     animation: typing 4s steps(40) 1s forwards, blink 0.75s step-end infinite;
   }
   
-  /* Hacer que el cursor "parpadee" si lo necesitas */
   @keyframes blink {
     50% {
-      border-color: transparent; /* Mantener invisible el cursor */
+      border-color: transparent; 
     }
   }
   
 
-  /* Estilo para la transición de imágenes dentro del modal */
 @keyframes slideInLeft {
   0% {
     transform: translateX(100%);
@@ -77,7 +73,7 @@ html, body {
 
 .modal-image {
   width: 100%;
-  height: 64vh; /* Ajuste para que la imagen sea más alta en el modal */
+  height: 64vh; 
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.5s ease-in-out;
@@ -118,19 +114,16 @@ html, body {
 }
 
 
-
-/* Efecto de movimiento deslizante (de izquierda a derecha) */
 .mosaic-image {
   position: relative;
-  animation: slide 5s linear infinite; /* 5 segundos de duración, se repite infinitamente */
+  animation: slide 5s linear infinite;
 }
 
 @keyframes slide {
   0% {
-    transform: translateX(-100%); /* Inicia fuera del contenedor por la izquierda */
-  }
+    transform: translateX(-100%); }
   100% {
-    transform: translateX(100%); /* Termina fuera del contenedor por la derecha */
+    transform: translateX(100%); 
   }
 }
 

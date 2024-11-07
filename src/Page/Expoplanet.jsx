@@ -9,7 +9,7 @@ import Eris from '../assets/img/Eris.jpg';
 import haumea from '../assets/img/haumea.jpg';
 import Makemake from '../assets/img/makemake.jpg';
 import pluto from '../assets/img/pluto.jpg';
-import { useNavigate } from 'react-router-dom'; // Importar useNavigate para navegación
+import { useNavigate } from 'react-router-dom'; 
 
 const curiosidades = [
     { imgSrc: urano, descripcion: 'Jupiter is the largest planet in our solar system  if it were a hollow shell, 1,000 Earths could fit inside.' },
@@ -25,7 +25,7 @@ const curiosidades = [
 
 const ExploraCuriosidades = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
-    const navigate = useNavigate(); // Instanciamos el hook de navegación
+    const navigate = useNavigate(); 
 
     const handleImageClick = (index) => {
         setSelectedIndex(selectedIndex === index ? null : index);
@@ -34,8 +34,7 @@ const ExploraCuriosidades = () => {
     return (
         <div className="explora-curiosidades">
             <h1>Explora Curiosidades Espaciales</h1>
-            {/* Botón para volver atrás */}
-            <button onClick={() => navigate(-1)} className="boton-atras">
+            <button onClick={() => navigate(-1)} class="boton-atras">
             <i class="fa-solid fa-rotate-left"></i>
             </button>
             <div className="lista-curiosidades">
@@ -47,7 +46,7 @@ const ExploraCuriosidades = () => {
                             className="curiosidad-imagen"
                             onClick={() => handleImageClick(index)}
                         />
-                        {selectedIndex === index && <p>{item.descripcion}</p>}
+                        {selectedIndex === index && <p class="text-center text-black">{item.descripcion}</p>}
                     </div>
                 ))}
             </div>

@@ -9,7 +9,7 @@ import juno from "../assets/img/juno.jpg";
 import parker from "../assets/img/parker.png";
 import telescopio from "../assets/img/telescopio.jpg";
 import artemis2 from "../assets/img/artemis2.png";
-import { useNavigate } from "react-router-dom"; // Para la navegación
+import { useNavigate } from "react-router-dom"; 
 
 const curiosidades = [
     {
@@ -70,7 +70,7 @@ const curiosidades = [
 
 const Expomisiones = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
-    const navigate = useNavigate(); // Instanciamos el hook para navegación
+    const navigate = useNavigate(); 
 
     const handleImageClick = (index) => {
         setSelectedIndex(selectedIndex === index ? null : index);
@@ -79,7 +79,6 @@ const Expomisiones = () => {
     return (
         <div className="explora-curiosidades">
             <h1>Explora Curiosidades Espaciales</h1>
-            {/* Botón para volver a la página anterior */}
             <button onClick={() => navigate(-1)} className="boton-atras">
             <i class="fa-solid fa-rotate-left"></i>
             </button>
@@ -94,7 +93,7 @@ const Expomisiones = () => {
                         />
                         {selectedIndex === index && (
                             <div>
-                                <p>{item.descripcion}</p>
+                                <p class="text-center text-black">{item.descripcion}</p>
                                 <a
                                     href={item.Link}
                                     target="_blank"
