@@ -32,12 +32,6 @@ const App = () => {
           </Routes>
         </div>
         <Footer />
-        <div>
-          <Routes className = "Rutasexternas">
-            <Route path='/Expoplanet' element= {<Expoplanet/>}/>
-            <Route path='/Expomisiones' element= {<Expomisiones/>}/>
-          </Routes>
-        </div>
       </div>
     </Router>
   );

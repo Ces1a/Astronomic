@@ -41,7 +41,7 @@ const MisionVision = () => {
 
     return (
         <div
-            className="mision-vision-container p-8"
+            className="mision-vision-container p-8 w-full"
             style={{
                 backgroundImage: 'linear-gradient(to bottom, #003b5c, #001f2d)', // Igual que el fondo del blog
                 backgroundSize: 'cover',
@@ -54,25 +54,25 @@ const MisionVision = () => {
 
             <div className="relative z-10">
                 {/* Logo en la parte superior */}
-                <div className="logo-container flex justify-start items-center mb-12">
-                    <img src={logo} alt="Logo" className="w-52 h-auto mr-8" />
+                <div className="logo-container flex flex-col sm:flex-row justify-start items-center mb-12">
+                    <img src={logo} alt="Logo" className="w-52 h-auto mr-8 mb-4 sm:mb-0" />
                     <div className="mision-vision-header text-left">
                         <h1 className="text-4xl font-extrabold text-blue-100 mb-2">Misión y Visión</h1>
-                        <p className="text-lg text-blue-200">Transformando la exploración espacial en una experiencia educativa única.</p>
+                        <p className="text-lg sm:text-xl text-blue-200">Transformando la exploración espacial en una experiencia educativa única.</p>
                     </div>
                 </div>
 
                 {/* Contenedor para Misión y Visión lado a lado */}
-                <div className="flex justify-between gap-8 mb-12">
+                <div className="flex flex-col sm:flex-row justify-between gap-8 mb-12">
                     {/* Contenedor para Misión */}
                     <div className="mision-container bg-white p-6 rounded-xl shadow-lg flex-1 hover:shadow-2xl transition-all duration-300">
                         <h2 className="text-3xl font-semibold text-center text-blue-900 mb-4 drop-shadow-lg">Misión</h2>
                         <p className="text-lg leading-relaxed text-blue-900 text-justify">
-                            Brindar a los usuarios una experiencia educativa interactiva y divertida, donde puedan explorar el espacio y aprender sobre el universo, 
+                            Brindar a los usuarios una experiencia educativa interactiva y divertida, donde puedan explorar el espacio y aprender sobre el universo,
                             fomentando la curiosidad científica y el amor por la astronomía, a través de recursos accesibles y emocionantes.
                         </p>
                     </div>
-                
+
                     {/* Contenedor para Visión */}
                     <div className="vision-container bg-white p-6 rounded-xl shadow-lg flex-1 hover:shadow-2xl transition-all duration-300">
                         <h2 className="text-3xl font-semibold text-center text-blue-900 mb-4 drop-shadow-lg">Visión</h2>
@@ -85,25 +85,25 @@ const MisionVision = () => {
 
                 {/* Sección del Equipo */}
                 <div className="grupo-imagenes mb-12 text-center">
-                    <h2 className="text-5xl font-semibold mb-6 text-white">Nuestro Equipo</h2>
-                    <div className="imagenes-container flex justify-center gap-8">
+                    <h2 className="text-4xl sm:text-5xl font-extrabold text-blue-100 mb-6">Nuestro Equipo</h2>
+                    <div className="imagenes-container flex flex-wrap justify-center gap-8">
                         {/* Imágenes de los miembros del equipo */}
-                        <img 
-                            src={cesiaImage} 
+                        <img
+                            src={cesiaImage}
                             alt="Cesia"
-                            className="grupo-imagen w-40 h-40 object-cover rounded-full cursor-pointer transform transition duration-300 hover:scale-105"
+                            className="grupo-imagen w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full cursor-pointer transform transition duration-300 hover:scale-105"
                             onClick={() => handleImageClick('cesia')}
-                        />  
-                        <img 
-                            src={wandaImage} 
+                        />
+                        <img
+                            src={wandaImage}
                             alt="Wanda"
-                            className="grupo-imagen w-40 h-40 object-cover rounded-full cursor-pointer transform transition duration-300 hover:scale-105"
+                            className="grupo-imagen w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full cursor-pointer transform transition duration-300 hover:scale-105"
                             onClick={() => handleImageClick('wanda')}
                         />
-                        <img 
-                            src={katheImage} 
+                        <img
+                            src={katheImage}
                             alt="Katherine"
-                            className="grupo-imagen w-40 h-40 object-cover rounded-full cursor-pointer transform transition duration-300 hover:scale-105"
+                            className="grupo-imagen w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full cursor-pointer transform transition duration-300 hover:scale-105"
                             onClick={() => handleImageClick('kathe')}
                         />
                     </div>
@@ -112,7 +112,7 @@ const MisionVision = () => {
                 {/* Modal para mostrar la descripción del miembro */}
                 {showModal && selectedPerson && (
                     <div className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                        <div 
+                        <div
                             className="modal-content p-8 rounded-lg max-w-lg w-full relative"
                             style={{
                                 backgroundColor: '#add8e6', // Aplicamos el mismo azul claro
@@ -143,4 +143,4 @@ const MisionVision = () => {
     );
 };
 
-export default MisionVision;
+export default MisionVision;
