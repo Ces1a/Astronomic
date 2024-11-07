@@ -3,7 +3,7 @@ import '../../src/App.css/'
 import saturno from '../assets/img/saturno.jpg';
 import jupiter from '../assets/img/jupiter.jpg';
 import neptuno from '../assets/img/neptuno.jpg';
-import urano from '../assets/img/urano.jpg';
+import urano from '../assets/img/Urano.jpg';
 import ceres from '../assets/img/ceres.jpg';
 import Eris from '../assets/img/Eris.jpg';
 import haumea from '../assets/img/haumea.jpg';
