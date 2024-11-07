@@ -28,16 +28,16 @@ const App = () => {
             <Route path="/ImagenesLibrary" element={<ImagenesLibrary/>} />
             <Route path="/Planeta" element={<Planeta />} />
             <Route path="/MisionVision" element={<MisionVision />} />
-            <Route path="/Explora" element={<Explora />} />
+            <Route path="/Explora" element={<Explora />} />            
           </Routes>
-        </div>
-        <Footer />
-        <div>
+          <div>
           <Routes className = "Rutasexternas">
             <Route path='/Expoplanet' element= {<Expoplanet/>}/>
             <Route path='/Expomisiones' element= {<Expomisiones/>}/>
           </Routes>
         </div>
+        </div>
+        <Footer />
       </div>
     </Router>
   );
