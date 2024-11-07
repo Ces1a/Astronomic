@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import "../../src/App.css";
 import cesiaImage from '../assets/img/Cesia.jpg'; 
 import wandaImage from '../assets/img/Wanda.jpg';
-import katheImage from '../assets/img/Katherine.jpg';
-import logo from '../assets/img/logofinal.png';  // Importando el logo
+import katheImage from '../assets/img/katherine.jpg';
+import logo from '../assets/img/LogoFinal.png';  // Importando el logo
 
 const MisionVision = () => {
     const [selectedPerson, setSelectedPerson] = useState(null);
