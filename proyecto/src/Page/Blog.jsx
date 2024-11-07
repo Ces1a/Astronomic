@@ -103,7 +103,7 @@ const Blog = () => {
                   <div key={postIndex} className="border-b py-2">
                     {/* Publicación en negrita */}
                     <div className="text-white text-lg font-bold">{post.text}</div>
-                    
+
                     <form className="mt-2">
                       <input
                         type="text"
@@ -158,9 +158,9 @@ const Blog = () => {
                 <img
                   src={apodData.url}
                   alt={apodData.title}
-                  className="mt-4 w-11/12 mx-auto rounded-lg shadow-lg"
+                  className="mt-4 w-3/4 sm:w-1/2 md:w-1/3 mx-auto rounded-lg shadow-lg" // Imagen más pequeña
                 />
-                <p className="mt-4 text-xl text-center">{apodData.explanation}</p>
+                <p className="mt-4 text-xl text-white text-center">{apodData.explanation}</p> {/* Descripción en blanco */}
               </div>
             )}
           </div>
@@ -192,10 +192,10 @@ const Blog = () => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="relative z-10">
-        <div className="flex justify-between items-center bg-[#003b5c] text-white p-4 w-full">
+        <div className="flex flex-col sm:flex-row justify-between items-center bg-[#003b5c] text-white p-4 w-full">
           <div className="text-2xl font-bold text-white">El Observatorio Digital</div>
 
-          <div className="flex space-x-8">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 mt-4 sm:mt-0">
             <button
               onClick={() => setActiveTab('foro')}
               className={`p-2 text-white font-bold ${activeTab === 'foro' ? 'text-yellow-500' : 'hover:text-yellow-500'} transition-colors duration-300`}
@@ -224,3 +224,4 @@ const Blog = () => {
 };
 
 export default Blog;
+
